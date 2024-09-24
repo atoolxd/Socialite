@@ -7,7 +7,7 @@ using Persistence;
 
 namespace API.Controllers
 {
-    public class ActivitiesController : BaseApiContoller
+    public class ActivitiesController : BaseApiController
     {
         [HttpGet] //api/activities 
         public async Task<ActionResult<List<Activity>>> GetActivities()
@@ -15,7 +15,7 @@ namespace API.Controllers
             return await Mediator.Send(new List.Query());
         }
 
-        [HttpGet("{id}")]  //api/activities/GUIDoftheactivity
+        [HttpGet("{id}")]  //api/activities/GUID of the activity
         public async Task<ActionResult<Activity>> GetActivity(Guid id)
         {
             return await Mediator.Send(new Details.Query{Id= id});
